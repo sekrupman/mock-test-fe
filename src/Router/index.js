@@ -1,0 +1,23 @@
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+// IMPORT PAGES
+import App from "../App";
+import Register from "../register/index";
+import Login from "../login";
+import Dashboard from "../dashboard";
+
+
+function Router(){
+    return(
+        <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="register" element={<Register />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+        <Route path="api/tasks/:userId" element={<Dashboard />} />
+      </Routes>
+    )
+}
+
+export default Router

@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React from "react";
+import { Button } from 'reactstrap';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+function App(){
+  return(
+    <div className="App">    
+      <header className="App-header" style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <h1 >To Do List</h1>
+
+      <span>
+      <a href="/register">
+        <Button
+          style={{ backgroundColor: '#62b0f2', marginRight: '1rem' }}
         >
-          Learn React
+          Register
+        </Button>
         </a>
-      </header>
-    </div>
-  );
+        <a href="/login">
+          <Button
+            style={{ backgroundColor: '#62b0f2' }}
+          >
+            Login
+          </Button>
+          </a>
+        </span>    
+        </header>
+        </div>
+  )
 }
 
-export default App;
+export default App
