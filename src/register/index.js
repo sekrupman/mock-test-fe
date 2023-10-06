@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Label, Input, Button, Spinner } from 'reactstrap';
 import '../App.css';
 
@@ -10,6 +10,23 @@ function Register() {
   const [showAlert, setShowAlert] = useState(false)
   const [alertMessage, setAlertMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    let timeoutId;
+
+    if (isLoading) {
+      timeoutId = setTimeout(() => {
+        setAlertMessage('Please wait, the server is starting up');
+        setShowAlert(true);
+      }, 5000); 
+    } else {
+      clearTimeout(timeoutId);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isLoading]);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -130,7 +147,7 @@ function Register() {
               style={{ backgroundColor: '#62b0f2', marginLeft: '1rem' }}
               disabled={isLoading}
             >
-              {isLoading ? <Spinner size="sm" color="light" /> : 'Sign Up'} {/* Show Spinner when isLoading is true */}
+              {isLoading ? <Spinner size="sm" color="light" /> : 'Sign Up'}
             </Button>
           </span>
           {showAlert && (
